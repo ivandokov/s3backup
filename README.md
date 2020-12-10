@@ -3,7 +3,8 @@ Script to backup any folder to S3 compatible storage using [s3cmd](https://githu
 ```bash
 sudo apt install s3cmd
 ```
-Requires Bash 4.2 or later.
+Setup `s3cmd`'s [connection to your account](https://github.com/s3tools/s3cmd#simple-s3cmd-howto).  
+
 
 # Usage
 ```bash
@@ -14,3 +15,5 @@ You can use this script in cron jobs to regularly backup. For example every 6h.
 ```bash
 0 */6 * * * /path/to/s3backup.sh /var/www/html/ s3://backup/directory/ https://hooks.slack.com/services/A/B/C >> /dev/null 2>&1
 ```
+
+*Requires Bash 4.2 or later.*
