@@ -12,5 +12,5 @@ s3backup.sh [DIRECTORY TO BACKUP] [BACKUP AT S3 DIRECTORY] [SLACK WEBHOOK]
 
 You can use this script in cron jobs to regularly backup. For example every 6h.
 ```bash
-0 */6 * * * /path/to/s3backup.sh /var/www/html s3/backup/directory https://hooks.slack.com/services/A/B/C >> /dev/null 2>&1
+0 */6 * * * /path/to/s3backup.sh /var/www/html/ s3://backup/directory/ https://hooks.slack.com/services/A/B/C >> /dev/null 2>&1
 ```
