@@ -21,7 +21,7 @@ fi
 BACKUP=`s3cmd --quiet sync ${BACKUP_FROM} ${BACKUP_TO}`
 
 # Backup process errored
-if [ $? -ne 0 ]; then
+if [ $? -ne 0 ] || [ ! -z "${BACKUP}" ]; then
     # If Slack webhook is not provided simply show the backup output
     if [[ -z "$SLACK_WEBHOOK" ]]; then
         echo "${BACKUP}"
