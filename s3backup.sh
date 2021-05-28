@@ -18,7 +18,7 @@ fi
 [[ "${BACKUP_TO}" != */ ]] && BACKUP_TO="${BACKUP_TO}/"
 [[ "${BACKUP_TO}" != s3://* ]] && BACKUP_TO="s3://${BACKUP_TO}"
 
-QUIET=$(if [[ -z "$SLACK_WEBHOOK" ]]; then echo ""; else echo "--quiet"; fi)
+QUIET=$(if [[ -z "$SLACK_WEBHOOK" ]]; then echo "--progress --verbose"; else echo "--quiet"; fi)
 
 BACKUP=`s3cmd ${QUIET} sync ${BACKUP_FROM} ${BACKUP_TO}`
 
