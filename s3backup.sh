@@ -18,7 +18,9 @@ fi
 [[ "${BACKUP_TO}" != */ ]] && BACKUP_TO="${BACKUP_TO}/"
 [[ "${BACKUP_TO}" != s3://* ]] && BACKUP_TO="s3://${BACKUP_TO}"
 
-BACKUP=`s3cmd --quiet sync ${BACKUP_FROM} ${BACKUP_TO}`
+QUIET=$(if [[ -z "$SLACK_WEBHOOK" ]]; then echo ""; else echo "--quiet"; fi)
+
+BACKUP=`s3cmd ${QUIET} sync ${BACKUP_FROM} ${BACKUP_TO}`
 
 # Backup process errored
 if [ $? -ne 0 ] || [ ! -z "${BACKUP}" ]; then
